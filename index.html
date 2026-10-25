@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Tails · Momo</title>
 <meta name="description" content="Meet Momo, the mascot of Tails — the pet-care diary your whole family writes in. Reminders, a health book that lasts, one shared diary.">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 200 200%27%3E%3Cpath d=%27M24 56 Q18 8 50 10 Q78 14 84 44 Z%27 fill=%27%2378B85E%27/%3E%3Cpath d=%27M176 56 Q182 8 150 10 Q122 14 116 44 Z%27 fill=%27%2378B85E%27/%3E%3Cellipse cx=%27100%27 cy=%27104%27 rx=%2792%27 ry=%2784%27 fill=%27%2393CD6E%27/%3E%3Cpath d=%27M40 104 C40 72 60 64 74 70 C86 74 92 90 100 94 C108 90 114 74 126 70 C140 64 160 72 160 104 C162 134 140 156 100 158 C60 156 38 134 40 104 Z%27 fill=%27%23F8FAEC%27/%3E%3Ccircle cx=%2774%27 cy=%2786%27 r=%2714%27 fill=%27%231E2A22%27/%3E%3Ccircle cx=%27126%27 cy=%2786%27 r=%2714%27 fill=%27%231E2A22%27/%3E%3Ccircle cx=%2778%27 cy=%2781%27 r=%275%27 fill=%27%23fff%27/%3E%3Ccircle cx=%27130%27 cy=%2781%27 r=%275%27 fill=%27%23fff%27/%3E%3Cpath d=%27M92 97 Q100 92 108 97 Q106 105 100 107 Q94 105 92 97 Z%27 fill=%27%231E2A22%27/%3E%3Cpath d=%27M86 108 Q100 128 114 108 Z%27 fill=%27%231E2A22%27/%3E%3Cpath d=%27M36 142 Q100 178 164 142%27 stroke=%27%232F6E4C%27 stroke-width=%2718%27 fill=%27none%27 stroke-linecap=%27round%27/%3E%3Ccircle cx=%27100%27 cy=%27162%27 r=%2714%27 fill=%27%23F8E08A%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -219,11 +220,11 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
     <div class="grid">
       <div class="cell rv"><div class="momo-rig" data-feel="happy"></div><small>Happy</small><em>everything's done</em></div>
       <div class="cell rv"><div class="momo-rig" data-feel="hungry"></div><small>Hungry</small><em>a meal is overdue</em></div>
-      <div class="cell rv"><div class="momo-rig" data-feel="worried"></div><small>Worried</small><em>a medicine is late</em></div>
+      <div class="cell rv"><div class="momo-rig" data-feel="drink"></div><small>Drink water</small><em>fresh water, 1 pm</em></div>
       <div class="cell rv"><div class="momo-rig" data-feel="sad"></div><small>Sad</small><em>walk got skipped</em></div>
       <div class="cell rv"><div class="momo-rig" data-feel="curious"></div><small>Curious</small><em>a new note</em></div>
       <div class="cell rv"><div class="momo-rig" data-feel="love"></div><small>Love</small><em>you tapped me</em></div>
-      <div class="cell rv"><div class="momo-rig" data-feel="sleepy"></div><small>Sleepy</small><em>after 10 pm</em></div>
+      <div class="cell rv"><div class="momo-rig" data-feel="groom"></div><small>Grooming</small><em>bath day</em></div>
       <div class="cell rv"><div class="momo-rig" data-feel="glad" data-extra="crown"></div><small>Plus</small><em>crown, 3 coats, unlimited</em></div>
     </div>
   </div>
@@ -299,6 +300,24 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       <!-- paws -->
       <g class="pawL"><path d="M50 114 C30 112 12 128 13 146 C14 164 36 170 54 164 C64 160 64 146 62 134 C61 124 58 116 50 114 Z" fill="${BODY}"/><circle cx="56" cy="120" r="9" fill="${BODY}"/><path d="M18 134 C12 150 18 164 34 168" stroke="${BODY_DK}" stroke-width="3" fill="none" stroke-linecap="round" opacity=".4"/><path d="M50 132 Q54 144 50 156" stroke="${BODY_DK}" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".35"/></g>
       <g class="pawR"><path d="M150 114 C170 112 188 128 187 146 C186 164 164 170 146 164 C136 160 136 146 138 134 C139 124 142 116 150 114 Z" fill="${BODY}"/><circle cx="144" cy="120" r="9" fill="${BODY}"/><path d="M182 134 C188 150 182 164 166 168" stroke="${BODY_DK}" stroke-width="3" fill="none" stroke-linecap="round" opacity=".4"/><path d="M150 132 Q146 144 150 156" stroke="${BODY_DK}" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".35"/></g>
+      <!-- activity props, faded in per feeling -->
+      <g class="p hungry" opacity="0">
+        <g transform="rotate(-12 30 128)"><rect x="28" y="112" width="5" height="32" rx="2.5" fill="#C8CFC7"/><path d="M24 104 v12 M28 102 v14 M32 102 v14 M36 104 v12" stroke="#C8CFC7" stroke-width="2.5" stroke-linecap="round"/></g>
+        <g transform="rotate(12 170 128)"><rect x="167" y="112" width="5" height="32" rx="2.5" fill="#C8CFC7"/><ellipse cx="170" cy="105" rx="7" ry="10" fill="#C8CFC7"/></g>
+        <path class="drool" d="M110 116 Q114 124 110 130 Q106 124 110 116" fill="#F7B6C2"/>
+      </g>
+      <g class="p drink" opacity="0">
+        <path d="M50 150 Q100 178 150 150 L146 172 Q100 194 54 172 Z" fill="#9FC5E8"/><ellipse cx="100" cy="150" rx="50" ry="11" fill="#D6E9F8"/><ellipse cx="100" cy="150" rx="40" ry="7" fill="#9FC5E8" opacity=".8"/>
+        <g class="splash"><circle cx="66" cy="146" r="3" fill="#9FC5E8"/><circle cx="136" cy="144" r="2.5" fill="#9FC5E8"/><circle cx="124" cy="138" r="2" fill="#9FC5E8"/></g>
+      </g>
+      <g class="p groom" opacity="0">
+        <g class="brush"><rect x="152" y="40" width="12" height="40" rx="5" fill="#FBEFB8"/><rect x="148" y="76" width="20" height="14" rx="4" fill="${INK}"/><path d="M152 90v8M158 90v8M164 90v8" stroke="#CFC6B0" stroke-width="2"/></g>
+        <g class="bubbles"><circle cx="44" cy="110" r="6" fill="#D6E9F8"/><circle cx="34" cy="130" r="4" fill="#D6E9F8"/><circle cx="160" cy="120" r="5" fill="#D6E9F8"/><circle cx="52" cy="70" r="4" fill="#D6E9F8"/><circle cx="170" cy="160" r="3" fill="#D6E9F8"/></g>
+      </g>
+      <g class="p love" opacity="0">
+        <path d="M100 160 c-16-20-44-12-36 12 5 13 36 30 36 30 s31-17 36-30 c8-24-20-32-36-12z" fill="#F08C7A"/><ellipse cx="86" cy="158" rx="5" ry="3" fill="#fff" opacity=".5"/>
+        <g class="floaty"><path d="M150 54 c-4-8-16-4-12 6 2 5 12 10 12 10 s10-5 12-10 c4-10-8-14-12-6z" fill="#F08C7A"/><path d="M38 70 c-3-6-12-3-9 4 1 4 9 8 9 8 s8-4 9-8 c3-7-6-10-9-4z" fill="#F7B6C2"/></g>
+      </g>
       <g class="bang" opacity="0"><circle cx="158" cy="56" r="14" fill="#FBEFB8"/><text x="153" y="63" font-size="20" font-weight="800" font-family="Nunito,Arial,sans-serif" fill="${INK}">!</text></g>
       <g class="zz" opacity="0"><text x="150" y="60" font-size="22" font-weight="800" font-family="Nunito,Arial,sans-serif" fill="${INK}">z</text><text x="166" y="42" font-size="16" font-weight="800" font-family="Nunito,Arial,sans-serif" fill="${INK}">z</text></g>
     </g></svg>`;
@@ -309,14 +328,16 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
   const FEEL = {
     happy:   { ears:'n', eyes:'round', lid:0,   tilt:0,  pupil:1,    mouth:'smile',  brow:'',        blush:.9, sat:1,  rot:0,  sx:1,    sy:1,    tear:0, bang:0, zz:0 },
     glad:    { ears:'u', eyes:'arc',   lid:0,   tilt:0,  pupil:1,    mouth:'big',    brow:'',        blush:1,  sat:1,  rot:0,  sx:1.04, sy:.96,  tear:0, bang:0, zz:0 },
-    love:    { ears:'u', eyes:'arc',   lid:0,   tilt:0,  pupil:1,    mouth:'line',   brow:'',        blush:1,  sat:1,  rot:0,  sx:1.02, sy:1,    tear:0, bang:0, zz:0 },
+    love:    { ears:'u', eyes:'arc',   lid:0,   tilt:0,  pupil:1,    mouth:'line',   brow:'',        blush:1,  sat:1,  rot:0,  sx:1.02, sy:1,    tear:0, bang:0, zz:0, prop:'love' },
     curious: { ears:'n', eyes:'round', lid:0,   tilt:0,  pupil:1.15, mouth:'o',      brow:'curious', blush:.7, sat:1,  rot:-6, sx:1,    sy:1.01, tear:0, bang:0, zz:0 },
     surprise:{ ears:'u', eyes:'round', lid:0,   tilt:0,  pupil:1.3,  mouth:'o',      brow:'up',      blush:.6, sat:1,  rot:0,  sx:.97,  sy:1.05, tear:0, bang:0, zz:0 },
     worried: { ears:'d', eyes:'round', lid:.1,  tilt:0,  pupil:.95,  mouth:'wavy',   brow:'worried', blush:0,  sat:.95,rot:2,  sx:1,    sy:.99,  tear:0, bang:1, zz:0 },
     sad:     { ears:'d', eyes:'round', lid:.4,  tilt:16, pupil:.95,  mouth:'cry',    brow:'',        blush:.3, sat:.45,rot:3,  sx:1.02, sy:.95,  tear:1, bang:0, zz:0 },
     sleepy:  { ears:'d', eyes:'sleep', lid:0,   tilt:0,  pupil:1,    mouth:'sleepy', brow:'',        blush:.6, sat:.9, rot:-3, sx:1.02, sy:.96,  tear:0, bang:0, zz:1 },
     bored:   { ears:'d', eyes:'round', lid:.45, tilt:0,  pupil:1,    mouth:'flat',   brow:'bored',   blush:.5, sat:.95,rot:0,  sx:1,    sy:.98,  tear:0, bang:0, zz:0 },
-    hungry:  { ears:'n', eyes:'round', lid:0,   tilt:0,  pupil:1.15, mouth:'open',   brow:'',        blush:.9, sat:1,  rot:0,  sx:1,    sy:1,    tear:0, bang:0, zz:0 },
+    hungry:  { ears:'n', eyes:'round', lid:0,   tilt:0,  pupil:1.15, mouth:'open',   brow:'',        blush:.9, sat:1,  rot:0,  sx:1,    sy:1,    tear:0, bang:0, zz:0, prop:'hungry' },
+    drink:   { ears:'n', eyes:'round', lid:.15, tilt:0,  pupil:1,    mouth:'open',   brow:'',        blush:.9, sat:1,  rot:0,  sx:1.03, sy:.94,  tear:0, bang:0, zz:0, prop:'drink' },
+    groom:   { ears:'u', eyes:'arc',   lid:0,   tilt:0,  pupil:1,    mouth:'line',   brow:'',        blush:1,  sat:1,  rot:-3, sx:1,    sy:1.01, tear:0, bang:0, zz:0, prop:'groom' },
   };
   const IDLE = {
     happy:   ['happy','curious','glad','happy','bored','happy','surprise','love'],
@@ -384,6 +405,13 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       this.fade('.eyes-round', F.eyes === 'round'); this.fade('.eyes-arc', F.eyes === 'arc'); this.fade('.eyes-sleep', F.eyes === 'sleep');
       for (const m of ['smile','big','line','wavy','cry','sad','o','open','sleepy','flat']) this.fade(`.m.${m}`, F.mouth === m, .16);
       for (const b of ['worried','curious','bored','up']) this.fade(`.brow.${b}`, F.brow === b);
+      for (const pr of ['hungry','drink','groom','love']) this.fade(`.p.${pr}`, F.prop === pr, .12);
+      const ph = (t/700)%1;
+      this.$1('.drool').setAttribute('transform', `translate(0 ${ph*14})`); this.$1('.drool').setAttribute('opacity', 1 - ph);
+      this.$1('.splash').setAttribute('transform', `translate(100 150) scale(${0.6 + 0.5*Math.sin(t/300)}) translate(-100 -150)`);
+      this.$1('.brush').setAttribute('transform', `rotate(${-10 + 20*Math.sin(t/350)} 156 70) translate(0 ${12 + 12*Math.sin(t/350)})`);
+      this.$1('.bubbles').setAttribute('transform', `translate(0 ${-((t/60)%34)})`); this.$1('.bubbles').setAttribute('opacity', 1 - ((t/60)%34)/34);
+      this.$1('.floaty').setAttribute('transform', `translate(0 ${-((t/50)%30)})`); this.$1('.floaty').setAttribute('opacity', 1 - ((t/50)%30)/30);
       // pupils follow, dilate when you're near
       const px = c.lx*5, py = c.ly*4;
       this.$('.pupil').forEach((p) => p.setAttribute('transform', `translate(${px} ${py})`));
@@ -398,7 +426,7 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       this.$1('.bang').setAttribute('opacity', c.bang); this.$1('.bang').setAttribute('transform', `translate(0 ${Math.sin(t/300)*2*c.bang})`);
       this.$1('.zz').setAttribute('opacity', c.zz * (0.5 + 0.5*Math.sin(t/700))); this.$1('.zz').setAttribute('transform', `translate(0 ${-((t/40)%30)*c.zz})`);
       // paws: wave when glad / love, hug when sad
-      const wave = (this.feel === 'glad' || this.feel === 'love') ? Math.sin(t/120) * 18 - 30 : (this.feel === 'sad' || this.feel === 'worried') ? 12 : 0;
+      const wave = (this.feel === 'glad' || this.feel === 'groom') ? Math.sin(t/120) * 18 - 30 : (this.feel === 'sad' || this.feel === 'worried') ? 12 : (this.feel === 'drink' || this.feel === 'hungry' || this.feel === 'love') ? 16 : 0;
       this._w = lerp(this._w||0, wave, .15);
       this.$1('.pawR').setAttribute('transform', `rotate(${-this._w} 176 118)`); this.$1('.pawL').setAttribute('transform', `rotate(${this._w} 24 118)`);
       requestAnimationFrame((tt) => this.tick(tt));
@@ -414,5 +442,8 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
   if (reduce) momos.forEach((m) => { m.schedule = () => {}; m.blinkLoop = () => {}; });
 })();
 </script>
+<!-- Vercel Web Analytics (plain HTML) -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
