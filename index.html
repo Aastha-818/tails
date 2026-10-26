@@ -296,17 +296,18 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
     <radialGradient id="blushG" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F49AAE" stop-opacity=".95"/><stop offset="1" stop-color="#F49AAE" stop-opacity="0"/></radialGradient>
     <radialGradient id="irisG" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#3A4D40"/><stop offset=".6" stop-color="#1E2A22"/><stop offset="1" stop-color="#0B1410"/></radialGradient>
     <linearGradient id="collarG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3E8A60"/><stop offset=".5" stop-color="${COLLAR}"/><stop offset="1" stop-color="#1F4F36"/></linearGradient>
+    <clipPath id="bodyClip"><ellipse cx="100" cy="104" rx="92" ry="84"/></clipPath>
     <radialGradient id="tagG" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#FFF2B0"/><stop offset=".6" stop-color="${TAG}"/><stop offset="1" stop-color="#D9B84A"/></radialGradient>
     <ellipse cx="100" cy="198" rx="74" ry="4" fill="url(#ao)"/>
     <g class="body">
       <g class="legs"><rect x="55" y="170" width="30" height="28" rx="14" fill="url(#bodyG)"/><rect x="115" y="170" width="30" height="28" rx="14" fill="url(#bodyG)"/><rect x="55" y="170" width="30" height="28" rx="14" fill="${INK}" opacity=".1"/><rect x="115" y="170" width="30" height="28" rx="14" fill="${INK}" opacity=".1"/></g>
       <g class="ears">
-        <g class="ear n"><path d="M24 56 Q18 8 50 10 Q78 14 84 44 Z" fill="url(#bodyG)"/><path d="M24 56 Q18 8 50 10 Q78 14 84 44 Z" fill="${COLLAR}" opacity=".12"/><path d="M176 56 Q182 8 150 10 Q122 14 116 44 Z" fill="url(#bodyG)"/><path d="M176 56 Q182 8 150 10 Q122 14 116 44 Z" fill="${COLLAR}" opacity=".12"/><path d="M38 46 Q38 28 52 26 Q64 28 70 40 Z" fill="#F7C6CF" opacity=".5"/><path d="M162 46 Q162 28 148 26 Q136 28 130 40 Z" fill="#F7C6CF" opacity=".5"/></g>
-        <g class="ear u" opacity="0"><path d="M26 50 Q24 2 54 6 Q80 10 86 40 Z" fill="url(#bodyG)"/><path d="M26 50 Q24 2 54 6 Q80 10 86 40 Z" fill="${COLLAR}" opacity=".12"/><path d="M174 50 Q176 2 146 6 Q120 10 114 40 Z" fill="url(#bodyG)"/><path d="M174 50 Q176 2 146 6 Q120 10 114 40 Z" fill="${COLLAR}" opacity=".12"/></g>
-        <g class="ear d" opacity="0"><path d="M22 66 Q10 30 44 22 Q74 24 86 50 Z" fill="url(#bodyG)"/><path d="M22 66 Q10 30 44 22 Q74 24 86 50 Z" fill="${COLLAR}" opacity=".12"/><path d="M178 66 Q190 30 156 22 Q126 24 114 50 Z" fill="url(#bodyG)"/><path d="M178 66 Q190 30 156 22 Q126 24 114 50 Z" fill="${COLLAR}" opacity=".12"/></g>
+        <g class="ear n"><path d="M24 56 Q18 8 50 10 Q78 14 84 44 Z" fill="url(#bodyG)"/><path d="M176 56 Q182 8 150 10 Q122 14 116 44 Z" fill="url(#bodyG)"/></g>
+        <g class="ear u" opacity="0"><path d="M26 50 Q24 2 54 6 Q80 10 86 40 Z" fill="url(#bodyG)"/><path d="M174 50 Q176 2 146 6 Q120 10 114 40 Z" fill="url(#bodyG)"/></g>
+        <g class="ear d" opacity="0"><path d="M22 66 Q10 30 44 22 Q74 24 86 50 Z" fill="url(#bodyG)"/><path d="M178 66 Q190 30 156 22 Q126 24 114 50 Z" fill="url(#bodyG)"/></g>
       </g>
       <ellipse class="skin" cx="100" cy="104" rx="92" ry="84" fill="url(#bodyG)"/>
-      <ellipse cx="62" cy="48" rx="30" ry="18" fill="url(#sheen)" transform="rotate(-25 62 48)"/>
+      <ellipse cx="62" cy="48" rx="30" ry="18" fill="url(#sheen)" transform="rotate(-25 62 48)" clip-path="url(#bodyClip)"/>
       <path d="M40 106 C40 74 60 66 74 72 C86 76 92 92 100 96 C108 92 114 76 126 72 C140 66 160 74 160 106 C162 136 140 158 100 160 C60 158 38 136 40 106 Z" fill="${INK}" opacity=".08"/>
       <path d="M40 104 C40 72 60 64 74 70 C86 74 92 90 100 94 C108 90 114 74 126 70 C140 64 160 72 160 104 C162 134 140 156 100 158 C60 156 38 134 40 104 Z" fill="url(#faceG)"/>
       <g class="extra"></g>
