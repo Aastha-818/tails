@@ -476,7 +476,7 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
   addEventListener('scroll', () => { const now = performance.now(), v = Math.abs(scrollY - lastY) / Math.max(1, now - lastT); if (v > 2.2) momos.forEach((m) => { if (!m.fixed) m.set('surprise', true); }); lastY = scrollY; lastT = now; }, { passive: true });
 
   // waitlist → Google Sheet (Apps Script web app) + email (FormSubmit). Paste the deployed script URL below.
-  const SHEET_WEBHOOK = ''; // e.g. 'https://script.google.com/macros/s/AKfycb.../exec'
+  const SHEET_WEBHOOK = 'https://script.google.com/macros/s/AKfycbzLOCDNz2LAp_zZxUsHAZ3hdorCJVPA2cjJq0f37vb7c7ZycRTLkwvOD4gaRrLRwQAt/exec';
   // waitlist: posts to FormSubmit (first submission asks the inbox owner to confirm once)
   const form = document.getElementById('waitlist');
   if (form) form.addEventListener('submit', async (e) => {
