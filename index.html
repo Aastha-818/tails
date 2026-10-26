@@ -150,6 +150,11 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
   .banner .pose{height:240px;order:2}.banner .pose .momo-rig{left:50%;transform:translateX(-50%) rotate(-8deg);width:260px;bottom:-10%}
   .banner .copy{padding:34px 28px 0;text-align:center}.banner p{margin:0 auto}
   .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 14px}
+  .wait{grid-template-columns:1fr;padding:18px;border-radius:22px;max-width:none}
+  .wait input{font-size:16px;padding:14px}
+  .wait .btn{padding:14px 18px;font-size:16px}
+  .contact{flex-direction:column;text-align:center;gap:6px}
+  .end{padding:32px 0 60px}.end h2{font-size:30px}
   .why-grid{grid-template-columns:1fr}
   .why-card{padding:24px 22px 0 22px;text-align:center;min-height:0}
   .why-card .momo-rig{position:static;width:120px;margin:6px auto -10px}
@@ -255,9 +260,9 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       <input type="hidden" name="_template" value="table">
       <input type="hidden" name="_captcha" value="false">
       <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-      <label><span>Your name</span><input id="w-name" name="name" type="text" placeholder="Aastha" required autocomplete="name"></label>
-      <label><span>City</span><input id="w-city" name="city" type="text" placeholder="Bengaluru" required autocomplete="address-level2"></label>
-      <label class="full"><span>Number or email</span><input id="w-contact" name="contact" type="text" placeholder="98765 43210 or you@email.com" required inputmode="email"></label>
+      <label><span>Your name</span><input id="w-name" name="name" type="text" placeholder="Your name" required autocomplete="name"></label>
+      <label><span>City</span><input id="w-city" name="city" type="text" placeholder="Your city" required autocomplete="address-level2"></label>
+      <label class="full"><span>Number or email</span><input id="w-contact" name="contact" type="text" placeholder="Phone number or email" required inputmode="email"></label>
       <button class="btn" type="submit" id="w-btn">Notify me when it's live</button>
       <p class="msg" id="w-msg" role="status" aria-live="polite"></p>
     </form>
@@ -470,6 +475,8 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
   let lastY = scrollY, lastT = performance.now();
   addEventListener('scroll', () => { const now = performance.now(), v = Math.abs(scrollY - lastY) / Math.max(1, now - lastT); if (v > 2.2) momos.forEach((m) => { if (!m.fixed) m.set('surprise', true); }); lastY = scrollY; lastT = now; }, { passive: true });
 
+  // waitlist → Google Sheet (Apps Script web app) + email (FormSubmit). Paste the deployed script URL below.
+  const SHEET_WEBHOOK = ''; // e.g. 'https://script.google.com/macros/s/AKfycb.../exec'
   // waitlist: posts to FormSubmit (first submission asks the inbox owner to confirm once)
   const form = document.getElementById('waitlist');
   if (form) form.addEventListener('submit', async (e) => {
@@ -479,8 +486,11 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
     if (!data.name?.trim() || !data.city?.trim() || !data.contact?.trim()) { msg.className = 'msg err'; msg.textContent = 'Please fill all three — name, city and a number or email.'; return; }
     btn.disabled = true; btn.textContent = 'Sending…'; msg.className = 'msg'; msg.textContent = '';
     try {
-      const r = await fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) });
-      if (!r.ok) throw new Error('bad');
+      const row = { name: data.name.trim(), city: data.city.trim(), contact: data.contact.trim(), source: location.hostname || 'site' };
+      const jobs = [fetch(form.action, { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data) })];
+      if (SHEET_WEBHOOK) jobs.push(fetch(SHEET_WEBHOOK, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(row) }));
+      const [r] = await Promise.allSettled(jobs);
+      if (!SHEET_WEBHOOK && (r.status !== 'fulfilled' || !r.value.ok)) throw new Error('bad');
       msg.className = 'msg ok'; msg.textContent = `Thanks ${data.name.trim().split(' ')[0]} — Momo will ping you the day Tails is live.`;
       form.reset(); momos.forEach((m) => { m.set('love', true); m.hearts(); });
     } catch { msg.className = 'msg err'; msg.textContent = 'Could not send just now. DM @figmacreatives on Instagram and we\'ll add you.'; }
