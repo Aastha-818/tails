@@ -289,20 +289,29 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
   const INK='#1E2A22', BODY='#93CD6E', BODY_DK='#78B85E', FACE='#F8FAEC', COLLAR='#2F6E4C', STITCH='#D9E96B', TAG='#F8E08A', BLUSH='#F4B3BE';
   const TPL = `<svg viewBox="0 0 200 200" aria-hidden="true">
     <defs><clipPath id="faceMask"><path d="M40 104 C40 72 60 64 74 70 C86 74 92 90 100 94 C108 90 114 74 126 70 C140 64 160 72 160 104 C162 134 140 156 100 158 C60 156 38 134 40 104 Z"/></clipPath></defs>
-    <ellipse cx="100" cy="198" rx="72" ry="3.5" fill="${INK}" opacity=".08"/>
+    <radialGradient id="bodyG" gradientUnits="userSpaceOnUse" cx="70" cy="46" r="150"><stop offset="0" stop-color="#B9E39A"/><stop offset=".45" stop-color="${BODY}"/><stop offset="1" stop-color="#5E9E4A"/></radialGradient>
+    <radialGradient id="faceG" cx="45%" cy="30%" r="75%"><stop offset="0" stop-color="#FFFEF6"/><stop offset=".7" stop-color="#F6F6E6"/><stop offset="1" stop-color="#E6E6CF"/></radialGradient>
+    <radialGradient id="sheen" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="ao" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#1E3A2F" stop-opacity=".28"/><stop offset="1" stop-color="#1E3A2F" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blushG" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#F49AAE" stop-opacity=".95"/><stop offset="1" stop-color="#F49AAE" stop-opacity="0"/></radialGradient>
+    <radialGradient id="irisG" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#3A4D40"/><stop offset=".6" stop-color="#1E2A22"/><stop offset="1" stop-color="#0B1410"/></radialGradient>
+    <linearGradient id="collarG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3E8A60"/><stop offset=".5" stop-color="${COLLAR}"/><stop offset="1" stop-color="#1F4F36"/></linearGradient>
+    <radialGradient id="tagG" cx="40%" cy="30%" r="75%"><stop offset="0" stop-color="#FFF2B0"/><stop offset=".6" stop-color="${TAG}"/><stop offset="1" stop-color="#D9B84A"/></radialGradient>
+    <ellipse cx="100" cy="198" rx="74" ry="4" fill="url(#ao)"/>
     <g class="body">
-      <g class="legs"><rect x="55" y="170" width="30" height="28" rx="14" fill="${BODY}"/><rect x="115" y="170" width="30" height="28" rx="14" fill="${BODY}"/></g>
+      <g class="legs"><rect x="55" y="170" width="30" height="28" rx="14" fill="url(#bodyG)"/><rect x="115" y="170" width="30" height="28" rx="14" fill="url(#bodyG)"/><rect x="55" y="170" width="30" height="28" rx="14" fill="${INK}" opacity=".1"/><rect x="115" y="170" width="30" height="28" rx="14" fill="${INK}" opacity=".1"/></g>
       <g class="ears">
-        <g class="ear n"><path d="M24 56 Q18 8 50 10 Q78 14 84 44 Z" fill="${BODY_DK}"/><path d="M176 56 Q182 8 150 10 Q122 14 116 44 Z" fill="${BODY_DK}"/></g>
-        <g class="ear u" opacity="0"><path d="M26 50 Q24 2 54 6 Q80 10 86 40 Z" fill="${BODY_DK}"/><path d="M174 50 Q176 2 146 6 Q120 10 114 40 Z" fill="${BODY_DK}"/></g>
-        <g class="ear d" opacity="0"><path d="M22 66 Q10 30 44 22 Q74 24 86 50 Z" fill="${BODY_DK}"/><path d="M178 66 Q190 30 156 22 Q126 24 114 50 Z" fill="${BODY_DK}"/></g>
+        <g class="ear n"><path d="M24 56 Q18 8 50 10 Q78 14 84 44 Z" fill="url(#bodyG)"/><path d="M24 56 Q18 8 50 10 Q78 14 84 44 Z" fill="${COLLAR}" opacity=".12"/><path d="M176 56 Q182 8 150 10 Q122 14 116 44 Z" fill="url(#bodyG)"/><path d="M176 56 Q182 8 150 10 Q122 14 116 44 Z" fill="${COLLAR}" opacity=".12"/><path d="M38 46 Q38 28 52 26 Q64 28 70 40 Z" fill="#F7C6CF" opacity=".5"/><path d="M162 46 Q162 28 148 26 Q136 28 130 40 Z" fill="#F7C6CF" opacity=".5"/></g>
+        <g class="ear u" opacity="0"><path d="M26 50 Q24 2 54 6 Q80 10 86 40 Z" fill="url(#bodyG)"/><path d="M26 50 Q24 2 54 6 Q80 10 86 40 Z" fill="${COLLAR}" opacity=".12"/><path d="M174 50 Q176 2 146 6 Q120 10 114 40 Z" fill="url(#bodyG)"/><path d="M174 50 Q176 2 146 6 Q120 10 114 40 Z" fill="${COLLAR}" opacity=".12"/></g>
+        <g class="ear d" opacity="0"><path d="M22 66 Q10 30 44 22 Q74 24 86 50 Z" fill="url(#bodyG)"/><path d="M22 66 Q10 30 44 22 Q74 24 86 50 Z" fill="${COLLAR}" opacity=".12"/><path d="M178 66 Q190 30 156 22 Q126 24 114 50 Z" fill="url(#bodyG)"/><path d="M178 66 Q190 30 156 22 Q126 24 114 50 Z" fill="${COLLAR}" opacity=".12"/></g>
       </g>
-      <ellipse class="skin" cx="100" cy="104" rx="92" ry="84" fill="${BODY}"/>
-      <path d="M8 104 A92 84 0 0 0 192 104 Q100 164 8 104 Z" fill="${BODY_DK}" opacity=".16"/>
-      <path d="M40 104 C40 72 60 64 74 70 C86 74 92 90 100 94 C108 90 114 74 126 70 C140 64 160 72 160 104 C162 134 140 156 100 158 C60 156 38 134 40 104 Z" fill="${FACE}"/>
+      <ellipse class="skin" cx="100" cy="104" rx="92" ry="84" fill="url(#bodyG)"/>
+      <ellipse cx="62" cy="48" rx="30" ry="18" fill="url(#sheen)" transform="rotate(-25 62 48)"/>
+      <path d="M40 106 C40 74 60 66 74 72 C86 76 92 92 100 96 C108 92 114 76 126 72 C140 66 160 74 160 106 C162 136 140 158 100 160 C60 158 38 136 40 106 Z" fill="${INK}" opacity=".08"/>
+      <path d="M40 104 C40 72 60 64 74 70 C86 74 92 90 100 94 C108 90 114 74 126 70 C140 64 160 72 160 104 C162 134 140 156 100 158 C60 156 38 134 40 104 Z" fill="url(#faceG)"/>
       <g class="extra"></g>
-      <ellipse class="blush" cx="46" cy="102" rx="11" ry="7" fill="${BLUSH}" opacity=".9"/><ellipse class="blush" cx="154" cy="102" rx="11" ry="7" fill="${BLUSH}" opacity=".9"/>
-      <path d="M92 97 Q100 92 108 97 Q106 105 100 107 Q94 105 92 97 Z" fill="${INK}"/>
+      <ellipse class="blush" cx="46" cy="104" rx="14" ry="9" fill="url(#blushG)"/><ellipse class="blush" cx="154" cy="104" rx="14" ry="9" fill="url(#blushG)"/>
+      <path d="M92 97 Q100 92 108 97 Q106 105 100 107 Q94 105 92 97 Z" fill="${INK}"/><ellipse cx="97" cy="97" rx="2.6" ry="1.4" fill="#fff" opacity=".6"/>
       <!-- brows -->
       <path class="brow worried" d="M60 68 L84 74M140 68 L116 74" stroke="${INK}" stroke-width="3.5" stroke-linecap="round" opacity="0"/>
       <path class="brow curious" d="M60 70 Q74 64 86 70M112 60 Q126 50 140 58" stroke="${INK}" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0"/>
@@ -310,8 +319,8 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       <path class="brow up" d="M60 66 Q74 58 88 64M112 64 Q126 58 140 66" stroke="${INK}" stroke-width="3.5" fill="none" stroke-linecap="round" opacity="0"/>
       <!-- eyes: round (with lids) / happy arcs / sleepy arcs -->
       <g class="eyes-round">
-        <g class="pupil"><circle class="iris" cx="74" cy="86" r="12.5" fill="${INK}"/><circle class="hi" cx="77.5" cy="82" r="4.5" fill="#fff"/><circle cx="70" cy="90" r="2" fill="#fff" opacity=".85"/></g>
-        <g class="pupil"><circle class="iris" cx="126" cy="86" r="12.5" fill="${INK}"/><circle class="hi" cx="129.5" cy="82" r="4.5" fill="#fff"/><circle cx="122" cy="90" r="2" fill="#fff" opacity=".85"/></g>
+        <circle cx="74" cy="87" r="13.5" fill="${INK}" opacity=".12"/><g class="pupil"><circle class="iris" cx="74" cy="86" r="12.5" fill="url(#irisG)"/><ellipse class="hi" cx="78" cy="81" rx="4.8" ry="4" fill="#fff"/><circle cx="69.5" cy="91" r="2.2" fill="#fff" opacity=".9"/></g>
+        <circle cx="126" cy="87" r="13.5" fill="${INK}" opacity=".12"/><g class="pupil"><circle class="iris" cx="126" cy="86" r="12.5" fill="url(#irisG)"/><ellipse class="hi" cx="130" cy="81" rx="4.8" ry="4" fill="#fff"/><circle cx="121.5" cy="91" r="2.2" fill="#fff" opacity=".9"/></g>
         <g class="lids" clip-path="url(#faceMask)" opacity="0"><circle class="lid" cx="74" cy="56" r="15.5" fill="${FACE}"/><circle class="lid" cx="126" cy="56" r="15.5" fill="${FACE}"/></g>
       </g>
       <g class="eyes-arc" opacity="0"><path d="M62 90 Q74 76 86 90" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M114 90 Q126 76 138 90" stroke="${INK}" stroke-width="5" fill="none" stroke-linecap="round"/></g>
@@ -331,13 +340,14 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       </g>
       <g class="tears" opacity="0"><path d="M66 100 Q70 110 66 116 Q62 110 66 100" fill="#9FC5E8"/><path d="M134 100 Q138 110 134 116 Q130 110 134 100" fill="#9FC5E8"/></g>
       <!-- collar + tag -->
-      <path d="M36 142 Q100 178 164 142" stroke="${COLLAR}" stroke-width="18" fill="none" stroke-linecap="round"/>
+      <path d="M36 142 Q100 178 164 142" stroke="url(#collarG)" stroke-width="18" fill="none" stroke-linecap="round"/>
+      <path d="M40 140 Q100 170 160 140" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" opacity=".18"/>
       <path d="M44 145 Q100 176 156 145" stroke="${STITCH}" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="6 7"/>
-      <circle cx="89" cy="152" r="5" fill="${TAG}"/><circle cx="111" cy="152" r="5" fill="${TAG}"/>
-      <circle cx="100" cy="162" r="14" fill="${TAG}"/><circle cx="95" cy="160" r="1.8" fill="${INK}"/><circle cx="105" cy="160" r="1.8" fill="${INK}"/><ellipse cx="100" cy="166" rx="2.6" ry="1.8" fill="${INK}"/>
+      <circle cx="89" cy="152" r="5" fill="url(#tagG)"/><circle cx="111" cy="152" r="5" fill="url(#tagG)"/>
+      <circle cx="100" cy="163" r="14" fill="${INK}" opacity=".12"/><circle cx="100" cy="162" r="14" fill="url(#tagG)"/><ellipse cx="94" cy="155" rx="3" ry="1.6" fill="#fff" opacity=".5"/><circle cx="95" cy="160" r="1.8" fill="${INK}"/><circle cx="105" cy="160" r="1.8" fill="${INK}"/><ellipse cx="100" cy="166" rx="2.6" ry="1.8" fill="${INK}"/>
       <!-- paws -->
-      <g class="pawL"><path d="M50 114 C30 112 12 128 13 146 C14 164 36 170 54 164 C64 160 64 146 62 134 C61 124 58 116 50 114 Z" fill="${BODY}"/><circle cx="56" cy="120" r="9" fill="${BODY}"/><path d="M18 134 C12 150 18 164 34 168" stroke="${BODY_DK}" stroke-width="3" fill="none" stroke-linecap="round" opacity=".4"/><path d="M50 132 Q54 144 50 156" stroke="${BODY_DK}" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".35"/></g>
-      <g class="pawR"><path d="M150 114 C170 112 188 128 187 146 C186 164 164 170 146 164 C136 160 136 146 138 134 C139 124 142 116 150 114 Z" fill="${BODY}"/><circle cx="144" cy="120" r="9" fill="${BODY}"/><path d="M182 134 C188 150 182 164 166 168" stroke="${BODY_DK}" stroke-width="3" fill="none" stroke-linecap="round" opacity=".4"/><path d="M150 132 Q146 144 150 156" stroke="${BODY_DK}" stroke-width="2.5" fill="none" stroke-linecap="round" opacity=".35"/></g>
+      <g class="pawL"><path d="M13 140 C13 123 22 112 38 112 C52 112 62 124 62 140 C61 156 51 167 38 167 C24 167 13 156 13 140 Z" fill="${INK}" opacity=".14" transform="translate(4 3)"/><path d="M13 140 C13 123 22 112 38 112 C52 112 62 124 62 140 C61 156 51 167 38 167 C24 167 13 156 13 140 Z" fill="url(#bodyG)"/><path d="M17 134 C19 123 27 115 38 113" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".28"/><path d="M28 116 Q30 124 29 132 M38 113 Q40 122 39 131 M48 115 Q50 123 49 131" stroke="#5E9E4A" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/></g>
+      <g class="pawR"><path d="M187 140 C187 123 178 112 162 112 C148 112 138 124 138 140 C139 156 149 167 162 167 C176 167 187 156 187 140 Z" fill="${INK}" opacity=".14" transform="translate(-4 3)"/><path d="M187 140 C187 123 178 112 162 112 C148 112 138 124 138 140 C139 156 149 167 162 167 C176 167 187 156 187 140 Z" fill="url(#bodyG)"/><path d="M183 134 C181 123 173 115 162 113" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".28"/><path d="M172 116 Q170 124 171 132 M162 113 Q160 122 161 131 M152 115 Q150 123 151 131" stroke="#5E9E4A" stroke-width="2" fill="none" stroke-linecap="round" opacity=".4"/></g>
       <!-- activity props, faded in per feeling -->
       <g class="p hungry" opacity="0">
         <g transform="rotate(-12 30 128)"><rect x="28" y="112" width="5" height="32" rx="2.5" fill="#C8CFC7"/><path d="M24 104 v12 M28 102 v14 M32 102 v14 M36 104 v12" stroke="#C8CFC7" stroke-width="2.5" stroke-linecap="round"/></g>
@@ -454,7 +464,7 @@ footer{text-align:center;padding:26px 0;font-size:12px;color:var(--ink50);displa
       const px = c.lx*5, py = c.ly*4;
       this.$('.pupil').forEach((p) => p.setAttribute('transform', `translate(${px} ${py})`));
       this.$('.iris').forEach((i) => i.setAttribute('r', 12.5 * c.pupil * (1 + near*.1)));
-      this.$('.hi').forEach((h) => h.setAttribute('r', 4.5 * (1 + near*.4)));
+      this.$('.hi').forEach((h) => { h.setAttribute('rx', 4.8 * (1 + near*.4)); h.setAttribute('ry', 4 * (1 + near*.4)); });
       // lids: blink + mood (same FACE-coloured discs as the app)
       const lid = Math.max(c.lid, c.blink);
       this.$1('.lids').setAttribute('opacity', Math.min(1, lid * 6));
